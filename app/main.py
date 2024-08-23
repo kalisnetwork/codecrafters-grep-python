@@ -7,7 +7,7 @@ import re
 
 
 def match_pattern(input_line, pattern):
-    # Compile the pattern to handle combined character classes and anchors
+    # Compile the pattern to handle combined character classes and quantifiers
     regex = re.compile(pattern)
     return bool(regex.search(input_line))
 
