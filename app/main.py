@@ -2,7 +2,7 @@ import sys
 import re
 
 def match_pattern(input_line, pattern):
-    # Compile the pattern to handle combined character classes, wildcards, alternations, and backreferences
+    # Compile the pattern to handle combined character classes, wildcards, alternations, and nested backreferences
     regex = re.compile(pattern)
     return bool(regex.search(input_line))
 
