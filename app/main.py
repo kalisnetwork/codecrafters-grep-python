@@ -12,11 +12,12 @@ def match_pattern(input_line, pattern):
     elif pattern == r"\d":
         return any(c.isdigit() for c in input_line)
     else:
-        raise RuntimeError(f"Unhandled pattern: {pattern}")
+        # Handle literal characters
+        return pattern in input_line
 
 def main():
     if len(sys.argv) != 3 or sys.argv[1] != "-E":
-        print("Usage: ./your_program.sh -E <pattern>")
+        print("Expected first argument to be '-E'")
         exit(1)
 
     pattern = sys.argv[2]
