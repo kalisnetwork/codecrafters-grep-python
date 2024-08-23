@@ -11,6 +11,9 @@ def match_pattern(input_line, pattern):
         return bool(re.search(r'\w', input_line))
     elif pattern == r"\d":
         return any(c.isdigit() for c in input_line)
+    elif re.match(r'\[\^.*\]', pattern):
+        # Handle negative character groups
+        return bool(re.search(pattern, input_line))
     elif re.match(r'\[.*\]', pattern):
         # Handle positive character groups
         return bool(re.search(pattern, input_line))
