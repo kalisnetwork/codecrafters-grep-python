@@ -7,19 +7,9 @@ import re
 
 
 def match_pattern(input_line, pattern):
-    if pattern == r"\w":
-        return bool(re.search(r'\w', input_line))
-    elif pattern == r"\d":
-        return any(c.isdigit() for c in input_line)
-    elif re.match(r'\[\^.*\]', pattern):
-        # Handle negative character groups
-        return bool(re.search(pattern, input_line))
-    elif re.match(r'\[.*\]', pattern):
-        # Handle positive character groups
-        return bool(re.search(pattern, input_line))
-    else:
-        # Handle literal characters
-        return pattern in input_line
+    # Compile the pattern to handle combined character classes
+    regex = re.compile(pattern)
+    return bool(regex.search(input_line))
 
 def main():
     if len(sys.argv) != 3 or sys.argv[1] != "-E":
