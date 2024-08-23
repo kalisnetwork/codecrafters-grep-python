@@ -1,13 +1,8 @@
 import sys
 import re
 
-
-# import pyparsing - available if you need it!
-# import lark - available if you need it!
-
-
 def match_pattern(input_line, pattern):
-    # Compile the pattern to handle combined character classes and wildcards
+    # Compile the pattern to handle combined character classes, wildcards, and alternations
     regex = re.compile(pattern)
     return bool(regex.search(input_line))
 
